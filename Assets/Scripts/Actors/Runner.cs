@@ -13,13 +13,30 @@ public class Runner : MonoBehaviour {
     ///     The speed at which the actor runs.
     /// </summary>
     [SerializeField] private float runSpeed = 5;
+    [SerializeField] private AudioClip[] footstepClips;
+    [SerializeField] private float footstepInterval;
 
     private Rigidbody2D body;
     private Facer facer;
 
+    private float footstepTimer;
+    
+    public bool IsRunning { get; private set; }
+
     private void Awake() {
         body = GetComponent<Rigidbody2D>();
         facer = GetComponent<Facer>();
+    }
+
+    private void Update() {
+        if (!IsRunning) return;
+        if (footstepClips.Length <= 0) return;
+
+        if (footstepTimer >= footstepInterval) {
+            footstepTimer = 0;
+            AudioManager.Instance.SpawnAndPlay(footstepClips[Random.Range(0, footstepClips.Length)],
+                transform.position);
+        }
     }
 
     /// <summary>
@@ -32,6 +49,7 @@ public class Runner : MonoBehaviour {
     /// </summary>
     /// <param name="direction">The direction that the actor runs in; negative means to the left, positive to the right.</param>
     public void Run(float direction) {
+        IsRunning = true;
         var velocityX = direction * runSpeed;
         body.velocity = new Vector2(velocityX, body.velocity.y);
         var scaleX = transform.localScale.x;
@@ -42,6 +60,7 @@ public class Runner : MonoBehaviour {
     ///     Stop running.
     /// </summary>
     public void StopRun() {
+        IsRunning = false;
         body.velocity = new Vector2(0, body.velocity.y);
     }
 

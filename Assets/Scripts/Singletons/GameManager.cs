@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 /// <summary>
 ///     Singleton that manages the game state.
 /// </summary>
-[RequireComponent(typeof(PlayerInputManager))]
 public class GameManager : Singleton<GameManager> {
     /// <summary>
     ///     The player prefab.
@@ -19,32 +18,7 @@ public class GameManager : Singleton<GameManager> {
 
     public event OnLevelStart LevelStarted;
 
-    private PlayerInputManager playerInputManager;
-
-    private readonly Dictionary<InputDevice, Player> players = new();
-    
-    protected override void OnAwake() {
-        playerInputManager = GetComponent<PlayerInputManager>();
-
-        InputSystem.onDeviceChange += OnDeviceChange;
-    }
-
-    /// <summary>
-    ///     Callback for when a controller event occurs.
-    /// </summary>
-    /// <param name="device">The device that triggered the event.</param>
-    /// <param name="change">The change that occurred.</param>
-    private void OnDeviceChange(InputDevice device, InputDeviceChange change) {
-        switch (change) {
-            case InputDeviceChange.Added:
-            case InputDeviceChange.Reconnected:
-                AddNewPlayer(device);
-                break;
-            case InputDeviceChange.Disconnected:
-                RemoveExistingPlayer(device);
-                break;
-        }
-    }
+    public Player Player { get; private set; }
 
     /// <summary>
     ///     Change scenes with a fade transition.
@@ -70,7 +44,6 @@ public class GameManager : Singleton<GameManager> {
         SaveDataManager.Instance.SaveGame();
         yield return SceneManager.LoadSceneAsync(sceneName);
         SaveDataManager.Instance.LoadGame();
-        SetupPlayers();
         switch (sceneTransitionType) {
             case SceneTransitionType.Level when SceneData.IsGameplayScene(sceneName) && entryName != null:
                 StartLevel(entryName);
@@ -141,27 +114,26 @@ public class GameManager : Singleton<GameManager> {
         var triggerTransform = sceneTransitionTrigger.transform;
         var triggerScale = triggerTransform.localScale;
         var triggerWidth = triggerCollider.bounds.size.x;
-        var targetX = triggerTransform.position.x + triggerWidth * triggerScale.x;
-        foreach (var (_, player) in players) {
-            triggerCollider.enabled = false;
-            player.transform.position = sceneTransitionTrigger.transform.position;
-            var playerInputHandler = player.GetComponent<PlayerInputHandler>();
-            playerInputHandler.Disable();
-            var playerScale = player.transform.localScale;
-            playerScale = new Vector3(Mathf.Sign(triggerScale.x) * playerScale.x, playerScale.y, playerScale.z);
-            player.transform.localScale = playerScale;
-            var playerRunner = player.GetComponent<Runner>();
-            playerRunner.RunTo(targetX);
+        var triggerPosition = triggerTransform.position;
+        var targetX = triggerPosition.x + triggerWidth * triggerScale.x;
+        triggerCollider.enabled = false;
+        Player.transform.position = triggerPosition;
+        var playerInputHandler = Player.GetComponent<PlayerInputHandler>();
+        playerInputHandler.Disable();
+        var playerScale = Player.transform.localScale;
+        playerScale = new Vector3(Mathf.Sign(triggerScale.x) * playerScale.x, playerScale.y, playerScale.z);
+        Player.transform.localScale = playerScale;
+        var playerRunner = Player.GetComponent<Runner>();
+        playerRunner.RunTo(targetX);
 
-            void RunFinishedHandler(Runner runner) {
-                runner.StopRun();
-                playerInputHandler.Enable();
-                triggerCollider.enabled = true;
-                playerRunner.AutoRunFinished -= RunFinishedHandler;
-            }
-            
-            playerRunner.AutoRunFinished += RunFinishedHandler;
+        void RunFinishedHandler(Runner runner) {
+            runner.StopRun();
+            playerInputHandler.Enable();
+            triggerCollider.enabled = true;
+            playerRunner.AutoRunFinished -= RunFinishedHandler;
         }
+        
+        playerRunner.AutoRunFinished += RunFinishedHandler;
     }
 
     /// <summary>
@@ -174,44 +146,6 @@ public class GameManager : Singleton<GameManager> {
             return;
         }
 
-        foreach (var (_, player) in players) {
-            player.transform.position = saveSpot.transform.position;
-        }
-    }
-
-    /// <summary>
-    ///     Add a new player state to the game manager.
-    /// </summary>
-    /// <param name="device">The device that will be used to control the new player.</param>
-    private void AddNewPlayer(InputDevice device) {
-        var playerInput = playerInputManager.JoinPlayer(device.deviceId, -1, null, device);
-        var existingPlayer = players.Values.FirstOrDefault();
-        if (existingPlayer) playerInput.transform.position = existingPlayer.transform.position;
-        var player = playerInput.GetComponent<Player>();
-        player.gameObject.SetActive(SceneData.IsGameplayScene(SceneManager.GetActiveScene().name));
-        players.Add(device, player);
-    }
-
-    /// <summary>
-    ///     Remove an existing player state from the game manager. 
-    /// </summary>
-    /// <param name="device">The input device key associated with the player to remove.</param>
-    private void RemoveExistingPlayer(InputDevice device) {
-        Destroy(players[device].gameObject);
-        players.Remove(device);
-    }
-
-    /// <summary>
-    ///     Set up all the players for the new scene.
-    /// </summary>
-    private void SetupPlayers() {
-        foreach (var device in InputSystem.devices) {
-            if (device is not (Gamepad or Keyboard)) continue;
-            if (players.TryGetValue(device, out var player)) {
-                player.gameObject.SetActive(SceneData.IsGameplayScene(SceneManager.GetActiveScene().name));
-            } else {
-                AddNewPlayer(device);
-            }
-        }
+        Player.transform.position = saveSpot.transform.position;
     }
 }

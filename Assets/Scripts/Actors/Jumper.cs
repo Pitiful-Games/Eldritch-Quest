@@ -24,6 +24,8 @@ public class Jumper : MonoBehaviour {
     ///     The gravity scale of the actor's rigid body when rising.
     /// </summary>
     [SerializeField] private float risingGravityScale = 2;
+    [SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioClip landClip;
 
     private Rigidbody2D body;
     private Grounder grounder;
@@ -90,6 +92,7 @@ public class Jumper : MonoBehaviour {
     ///     Perform a vertical jump.
     /// </summary>
     public void Jump() {
+        if (jumpClip) AudioManager.Instance.SpawnAndPlay(jumpClip, transform.position);
         body.velocity = new Vector2(body.velocity.x, jumpForce);
         Jumped?.Invoke();
     }
@@ -128,6 +131,7 @@ public class Jumper : MonoBehaviour {
     ///     Perform a landing.
     /// </summary>
     public void Land() {
+        if (landClip) AudioManager.Instance.SpawnAndPlay(landClip, transform.position);
         Landed?.Invoke();
     }
 }
