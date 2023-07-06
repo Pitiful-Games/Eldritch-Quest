@@ -643,7 +643,7 @@ PrefabInstance:
     - target: {fileID: 4268141416685232512, guid: 462b0c50bb1addd45830ba29574b9bd6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cb2febea4e66def4c9b04935abc0a7a0, type: 3}
+      objectReference: {fileID: 21300000, guid: cb5c78bc4e52c3746ae34f480e953db7, type: 3}
     - target: {fileID: 4301690483197657071, guid: 462b0c50bb1addd45830ba29574b9bd6, type: 3}
       propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
       value: 890718093381640
@@ -666,11 +666,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5400425575766268599, guid: 462b0c50bb1addd45830ba29574b9bd6, type: 3}
       propertyPath: m_text
-      value: Maldurin
+      value: Maldurin_Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873980402395239706, guid: 462b0c50bb1addd45830ba29574b9bd6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7536362318796342390, guid: 462b0c50bb1addd45830ba29574b9bd6, type: 3}
       propertyPath: link
-      value: 
+      value: https://www.youtube.com/@maldurin
       objectReference: {fileID: 0}
     - target: {fileID: 7536362318796342390, guid: 462b0c50bb1addd45830ba29574b9bd6, type: 3}
       propertyPath: roleText
@@ -1398,7 +1402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1732616099443413405, guid: 462b0c50bb1addd45830ba29574b9bd6, type: 3}
       propertyPath: m_Name
-      value: sounddesigncharles Credit
+      value: Charles Credit
       objectReference: {fileID: 0}
     - target: {fileID: 3136666041825165847, guid: 462b0c50bb1addd45830ba29574b9bd6, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1427,7 +1431,7 @@ PrefabInstance:
     - target: {fileID: 4268141416685232512, guid: 462b0c50bb1addd45830ba29574b9bd6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cb2febea4e66def4c9b04935abc0a7a0, type: 3}
+      objectReference: {fileID: 21300000, guid: bd0964f8ddb6d0a4b94eb10bb14cd1fe, type: 3}
     - target: {fileID: 4301690483197657071, guid: 462b0c50bb1addd45830ba29574b9bd6, type: 3}
       propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
       value: 388969869324
@@ -1450,11 +1454,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5400425575766268599, guid: 462b0c50bb1addd45830ba29574b9bd6, type: 3}
       propertyPath: m_text
-      value: sounddesigncharles
+      value: Charles
       objectReference: {fileID: 0}
     - target: {fileID: 7536362318796342390, guid: 462b0c50bb1addd45830ba29574b9bd6, type: 3}
       propertyPath: link
-      value: 
+      value: mailto:charleswaweruw@gmail.com
       objectReference: {fileID: 0}
     - target: {fileID: 7536362318796342390, guid: 462b0c50bb1addd45830ba29574b9bd6, type: 3}
       propertyPath: roleText

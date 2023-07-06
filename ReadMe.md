@@ -24,10 +24,10 @@
 
 ## Team
 - Art: [Evonik](https://linktr.ee/evonik_k)
-- Music: [Maldurin]()
+- Music: [Maldurin](https://www.youtube.com/@maldurin)
 - Programming: [jngo102](https://linktr.ee/jngo102)
-- Programming: [juritobi]()
-- Sound Design: [sounddesigncharles]()
+- Programming: [juritobi](https://juritobi.com)
+- Sound Design: [Charles](mailto:charleswaweruw@gmail.com)
 
 
 Pitiful Games' submission for the 2023 Game Maker's Toolkit Game Jam.
