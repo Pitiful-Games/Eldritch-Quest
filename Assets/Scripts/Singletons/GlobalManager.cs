@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -15,6 +16,9 @@ public class GlobalManager : MonoBehaviour {
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Initialize() {
         CreateSingletons();
+#if UNITY_EDITOR
+        GameManager.Instance.StartCoroutine(LoadMainMenu());
+#endif
     }
 
     /// <summary>
@@ -28,5 +32,11 @@ public class GlobalManager : MonoBehaviour {
 #if UNITY_EDITOR
         Instantiate(Resources.Load<GameObject>($"{SingletonsDirName}/UnityExplorer"));
 #endif
+    }
+    
+    private static IEnumerator LoadMainMenu() {    
+        var asyncOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainMenu");
+        while (!asyncOperation.isDone) yield return null;
+        SaveDataManager.Instance.LoadGame();
     }
 }

@@ -20,6 +20,11 @@ public class GameManager : Singleton<GameManager> {
 
     public Player Player { get; private set; }
 
+    protected override void OnAwake() {
+        Player = Instantiate(playerPrefab);
+        Player.gameObject.SetActive(false);
+    }
+
     /// <summary>
     ///     Change scenes with a fade transition.
     /// </summary>
@@ -44,6 +49,7 @@ public class GameManager : Singleton<GameManager> {
         SaveDataManager.Instance.SaveGame();
         yield return SceneManager.LoadSceneAsync(sceneName);
         SaveDataManager.Instance.LoadGame();
+        Player.gameObject.SetActive(SceneData.IsGameplayScene(sceneName));
         switch (sceneTransitionType) {
             case SceneTransitionType.Level when SceneData.IsGameplayScene(sceneName) && entryName != null:
                 StartLevel(entryName);
