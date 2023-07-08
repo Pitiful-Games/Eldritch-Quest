@@ -13,7 +13,7 @@ public class Runner : MonoBehaviour {
     ///     The speed at which the actor runs.
     /// </summary>
     [SerializeField] private float runSpeed = 5;
-    [SerializeField] private AudioClip[] footstepClips;
+    [SerializeField] private RandomAudioClipSelector footstepSelector;
     [SerializeField] private float footstepInterval;
 
     private Rigidbody2D body;
@@ -30,15 +30,13 @@ public class Runner : MonoBehaviour {
 
     private void Update() {
         if (!IsRunning) return;
-        if (footstepClips.Length <= 0) return;
 
         footstepTimer += Time.deltaTime;
         if (footstepTimer >= footstepInterval) {
             footstepTimer = 0;
-            AudioManager.Instance.SpawnAndPlay(footstepClips[Random.Range(0, footstepClips.Length)],
-                transform.position);
+            footstepSelector.PlayRandomClip(transform.position);
         }
-    }
+    }   
 
     /// <summary>
     ///     Raised when the actor has finished running to a horizontal position.

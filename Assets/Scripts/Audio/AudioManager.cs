@@ -16,10 +16,11 @@ public class AudioManager : Singleton<AudioManager> {
         musicSource.Play();
     }
 
-    public void SpawnAndPlay(AudioClip clip, Vector3 spawnPosition) {
+    public void SpawnAndPlay(AudioClip clip, Vector3 spawnPosition, float pitchMin = 1, float pitchMax = 1) {
         var audioPlayer = audioPlayerPool.Spawn();
         audioPlayer.transform.position = spawnPosition;
         audioPlayer.Clip = clip;
+        audioPlayer.GetComponent<AudioSource>().pitch = Random.Range(pitchMin, pitchMax);
     }
 
     public void DespawnPlayer(PlayAndDespawn audioPlayer) {

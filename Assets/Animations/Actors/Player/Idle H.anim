@@ -24,8 +24,8 @@ AnimationClip:
       value: {fileID: 21300000, guid: 804426241c0ff574893eb99a8bebea72, type: 3}
     - time: 0.625
       value: {fileID: 21300000, guid: 7505efa647548d64c8cadc66e9091222, type: 3}
-    - time: 1.25
-      value: {fileID: 21300000, guid: d769ff4a73cd79d4d889fc5fb97f0259, type: 3}
+    - time: 1.2083334
+      value: {fileID: 21300000, guid: 7505efa647548d64c8cadc66e9091222, type: 3}
     attribute: m_Sprite
     path: Sprite
     classID: 212
@@ -37,6 +37,8 @@ AnimationClip:
       value: {fileID: 21300000, guid: b6bed6bc7ea16d74c81f3e2f70c5ae5b, type: 3}
     - time: 0.625
       value: {fileID: 21300000, guid: 3b392b99139bcd3418fa0713ba86ea4d, type: 3}
+    - time: 1.2083334
+      value: {fileID: 21300000, guid: 3b392b99139bcd3418fa0713ba86ea4d, type: 3}
     attribute: m_Sprite
     path: Sprite/Quest Additions/Flower
     classID: 212
@@ -47,6 +49,8 @@ AnimationClip:
     - time: 0
       value: {fileID: 21300000, guid: ea8fbc9d83ab24c4ebc7fea3ed5621c0, type: 3}
     - time: 0.625
+      value: {fileID: 21300000, guid: 73281a2bf7ff6f64fbde37505403800e, type: 3}
+    - time: 1.2083334
       value: {fileID: 21300000, guid: 73281a2bf7ff6f64fbde37505403800e, type: 3}
     attribute: m_Sprite
     path: Sprite/Quest Additions/Blush
@@ -90,17 +94,19 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 21300000, guid: 804426241c0ff574893eb99a8bebea72, type: 3}
     - {fileID: 21300000, guid: 7505efa647548d64c8cadc66e9091222, type: 3}
-    - {fileID: 21300000, guid: d769ff4a73cd79d4d889fc5fb97f0259, type: 3}
+    - {fileID: 21300000, guid: 7505efa647548d64c8cadc66e9091222, type: 3}
     - {fileID: 21300000, guid: b6bed6bc7ea16d74c81f3e2f70c5ae5b, type: 3}
     - {fileID: 21300000, guid: 3b392b99139bcd3418fa0713ba86ea4d, type: 3}
+    - {fileID: 21300000, guid: 3b392b99139bcd3418fa0713ba86ea4d, type: 3}
     - {fileID: 21300000, guid: ea8fbc9d83ab24c4ebc7fea3ed5621c0, type: 3}
+    - {fileID: 21300000, guid: 73281a2bf7ff6f64fbde37505403800e, type: 3}
     - {fileID: 21300000, guid: 73281a2bf7ff6f64fbde37505403800e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.2916666
+    m_StopTime: 1.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
