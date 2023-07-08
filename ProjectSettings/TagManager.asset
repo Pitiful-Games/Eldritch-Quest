@@ -12,15 +12,15 @@ TagManager:
   - Water
   - UI
   - Terrain
-  - Enemy
-  - Player Attack
-  - Enemy Attack
-  - Scene Transition Trigger
-  - Save Spot
+  - Flame
   - NPC
-  - 
-  - 
-  - 
+  - Door
+  - Slasher
+  - Grabber
+  - Burnable
+  - Slashable
+  - Grabbable
+  - Item Pickup
   - 
   - 
   - 

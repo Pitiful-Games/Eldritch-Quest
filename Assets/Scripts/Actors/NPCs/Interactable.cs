@@ -14,11 +14,12 @@ public abstract class Interactable : MonoBehaviour {
     /// <summary>
     ///     Whether the player can interact with this actor.
     /// </summary>
-    public bool CanInteract { get; private set; }
+    public bool CanInteract { get; protected set; }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
-            other.GetComponent<PlayerInputHandler>().Move.performed += OnInteract;
+            if (UIManager.Instance == null) return;
+            UIManager.Instance.Actions.Submit.performed += OnInteract;
             if (autoInteract)
                 Interact();
             else
@@ -28,7 +29,8 @@ public abstract class Interactable : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D other) {
         if (other.CompareTag("Player")) {
-            other.GetComponent<PlayerInputHandler>().Move.performed -= OnInteract;
+            if (UIManager.Instance == null) return;
+            UIManager.Instance.Actions.Submit.performed -= OnInteract;
             CanInteract = false;
         }
     }
@@ -38,7 +40,7 @@ public abstract class Interactable : MonoBehaviour {
     /// </summary>
     /// <param name="context">The input action callback context.</param>
     private void OnInteract(InputAction.CallbackContext context) {
-        if (CanInteract && !autoInteract && Mathf.Abs(context.ReadValue<Vector2>().y) > 0) Interact();
+        if (CanInteract && !autoInteract && context.ReadValueAsButton()) Interact();
     }
 
     /// <summary>

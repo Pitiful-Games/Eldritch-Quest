@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 /// <summary>
 ///     Singleton that manages all the user interfaces in the game.
 /// </summary>
-public class UIManager : Singleton<UIManager>, IDataPersistence {
+public class UIManager : Singleton<UIManager> {
     /// <summary>
     ///     The canvas to parent user interfaces to.
     /// </summary>
@@ -23,28 +23,10 @@ public class UIManager : Singleton<UIManager>, IDataPersistence {
     /// </summary>
     public UIInputActions.UIActions Actions => inputActions.UI;
 
-    /// <summary>
-    ///     A reference instance of player actions for input rebinding.
-    /// </summary>
-    public PlayerInputActions ReferencePlayerActions { get; private set; }
-
-    /// <inheritdoc />
-    public void LoadData(SaveData saveData) {
-        if (string.IsNullOrEmpty(saveData.bindingOverrides)) return;
-
-        ReferencePlayerActions.asset.LoadBindingOverridesFromJson(saveData.bindingOverrides);
-    }
-
-    /// <inheritdoc />
-    public void SaveData(SaveData saveData) {
-        saveData.bindingOverrides = ReferencePlayerActions.asset.SaveBindingOverridesAsJson();
-    }
-
     /// <inheritdoc />
     protected override void OnAwake() {
         inputActions = new UIInputActions();
         inputActions.Enable();
-        ReferencePlayerActions = new PlayerInputActions();
         SceneManager.activeSceneChanged += OnSceneChange;
     }
 

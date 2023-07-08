@@ -20,7 +20,7 @@ public class GameManager : Singleton<GameManager> {
 
     public Player Player { get; private set; }
 
-    protected override void OnAwake() {
+    private void Start() {
         Player = Instantiate(playerPrefab);
         Player.gameObject.SetActive(false);
     }
@@ -50,13 +50,8 @@ public class GameManager : Singleton<GameManager> {
         yield return SceneManager.LoadSceneAsync(sceneName);
         SaveDataManager.Instance.LoadGame();
         Player.gameObject.SetActive(SceneData.IsGameplayScene(sceneName));
-        switch (sceneTransitionType) {
-            case SceneTransitionType.Level when SceneData.IsGameplayScene(sceneName) && entryName != null:
-                StartLevel(entryName);
-                break;
-            case SceneTransitionType.MainMenu when SceneData.IsGameplayScene(sceneName):
-                StartLevel();
-                break;
+        if (SceneData.IsGameplayScene(sceneName)) {
+            Player.transform.position = FindObjectOfType<PlayerPositioner>().transform.position;
         }
         
         LevelStarted?.Invoke();
@@ -101,57 +96,5 @@ public class GameManager : Singleton<GameManager> {
     /// </summary>
     public static void QuitGame() {
         Application.Quit();
-    }
-
-    /// <summary>
-    ///     Start a gameplay level from a scene transition trigger.
-    /// </summary>
-    /// <param name="entryName">The name of the scene transition trigger to enter from.</param>
-    private void StartLevel(string entryName) {
-        var sceneTransitionTrigger = FindObjectsOfType<SceneTransitionTrigger>()
-            .FirstOrDefault(trigger => trigger.name == entryName);
-        if (!sceneTransitionTrigger) {
-            Debug.LogError(
-                $"No scene transition trigger found in scene {SceneManager.GetActiveScene().name} with entry name {entryName}.");
-            return;
-        }
-        
-        var triggerCollider = sceneTransitionTrigger.GetComponent<Collider2D>();
-        var triggerTransform = sceneTransitionTrigger.transform;
-        var triggerScale = triggerTransform.localScale;
-        var triggerWidth = triggerCollider.bounds.size.x;
-        var triggerPosition = triggerTransform.position;
-        var targetX = triggerPosition.x + triggerWidth * triggerScale.x;
-        triggerCollider.enabled = false;
-        Player.transform.position = triggerPosition;
-        var playerInputHandler = Player.GetComponent<PlayerInputHandler>();
-        playerInputHandler.Disable();
-        var playerScale = Player.transform.localScale;
-        playerScale = new Vector3(Mathf.Sign(triggerScale.x) * playerScale.x, playerScale.y, playerScale.z);
-        Player.transform.localScale = playerScale;
-        var playerRunner = Player.GetComponent<Runner>();
-        playerRunner.RunTo(targetX);
-
-        void RunFinishedHandler(Runner runner) {
-            runner.StopRun();
-            playerInputHandler.Enable();
-            triggerCollider.enabled = true;
-            playerRunner.AutoRunFinished -= RunFinishedHandler;
-        }
-        
-        playerRunner.AutoRunFinished += RunFinishedHandler;
-    }
-
-    /// <summary>
-    ///     Start a gameplay level from a save spot.
-    /// </summary>
-    private void StartLevel() {
-        var saveSpot = FindObjectOfType<SaveSpot>();
-        if (!saveSpot) {
-            Debug.LogError($"No save spot found in scene {SceneManager.GetActiveScene().name}.");
-            return;
-        }
-
-        Player.transform.position = saveSpot.transform.position;
     }
 }

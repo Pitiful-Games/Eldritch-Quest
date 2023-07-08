@@ -47,13 +47,12 @@ public class Runner : MonoBehaviour {
     /// <summary>
     ///     Perform horizontal movement.
     /// </summary>
-    /// <param name="direction">The direction that the actor runs in; negative means to the left, positive to the right.</param>
-    public void Run(float direction) {
+    /// <param name="vector">The direction that the actor runs in.</param>
+    public void Run(Vector2 vector) {
         IsRunning = true;
-        var velocityX = direction * runSpeed;
-        body.velocity = new Vector2(velocityX, body.velocity.y);
+        body.velocity = vector * runSpeed;
         var scaleX = transform.localScale.x;
-        if ((scaleX < 0 && velocityX > 0) || (scaleX > 0 && velocityX < 0)) facer.Flip();
+        if ((scaleX < 0 && vector.x > 0) || (scaleX > 0 && vector.x < 0)) facer.Flip();
     }
 
     /// <summary>
@@ -61,22 +60,18 @@ public class Runner : MonoBehaviour {
     /// </summary>
     public void StopRun() {
         IsRunning = false;
-        body.velocity = new Vector2(0, body.velocity.y);
+        body.velocity = Vector2.zero;
     }
 
     /// <summary>
     ///     Run to a target x position.
     /// </summary>
     /// <param name="targetX">The x position to run to.</param>
-    public void RunTo(float targetX) {
+    public void RunTo(Vector3 target) {
         IEnumerator DoRunTo() {
-            var distance = targetX - transform.position.x;
-            var direction = Mathf.Sign(distance);
-            Run(direction);
+            Run(target.normalized);
 
-            if (distance < 0)
-                yield return new WaitUntil(() => transform.position.x <= targetX);
-            else if (distance > 0) yield return new WaitUntil(() => transform.position.x >= targetX);
+            yield return new WaitUntil(() => (transform.position - target).magnitude <= 0.1f);
 
             AutoRunFinished?.Invoke(this);
         }

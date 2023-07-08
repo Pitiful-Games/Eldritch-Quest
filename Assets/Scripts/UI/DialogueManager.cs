@@ -16,13 +16,13 @@ public class DialogueManager : BaseUI {
     /// <summary>
     ///     The currently displayed, translated dialogue text.
     /// </summary>
-    private string CurrentText => currentDialogue.pages[currentPage].GetLocalizedString();
+    private string CurrentText => currentDialogue.pages[currentPage];
 
     /// <inheritdoc />
     public override void Open() {
         base.Open();
 
-        foreach (var playerInputManager in FindObjectsOfType<PlayerInputHandler>(true)) playerInputManager.Disable();
+        FindObjectOfType<PlayerInputHandler>(true).Disable();
 
         if (UIManager.Instance) UIManager.Instance.Actions.Submit.performed += OnSubmit;
     }
@@ -33,7 +33,7 @@ public class DialogueManager : BaseUI {
 
         if (UIManager.Instance) UIManager.Instance.Actions.Submit.performed -= OnSubmit;
 
-        foreach (var playerInputManager in FindObjectsOfType<PlayerInputHandler>(true)) playerInputManager.Enable();
+        FindObjectOfType<PlayerInputHandler>(true).Enable();
 
         base.Close();
     }

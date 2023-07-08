@@ -5,29 +5,30 @@ using UnityEngine.InputSystem;
 /// <summary>
 ///     Singleton that manages global inputs.
 /// </summary>
-[RequireComponent(typeof(PlayerInput))]
 public class PlayerInputHandler : MonoBehaviour {
     /// <summary>
     ///     The duration that an input may be buffered for.
     /// </summary>
     [SerializeField] private float inputBufferTime = 0.15f;
 
-    /// <summary>
-    ///     The buffered input action for jumping.
-    /// </summary>
-    public BufferedInputAction Jump;
+    public BufferedInputAction Slash;
 
+    [NonSerialized] public InputAction Grab;
+    [NonSerialized] public InputAction Flame;
+
+    [NonSerialized] public InputAction Inventory;
+    
     /// <summary>
     ///     The input action for moving.
     /// </summary>
     [NonSerialized] public InputAction Move;
 
-    public PlayerInput PlayerInput { get; private set; }
+    public PlayerInputActions InputActions { get; private set; }
 
     /// <summary>
     ///     Whether the input manager is enabled.
     /// </summary>
-    public bool IsEnabled => PlayerInput.enabled;
+    public bool IsEnabled => InputActions.asset.enabled;
 
     private void Awake() {
         SetupInputActions();
@@ -45,26 +46,28 @@ public class PlayerInputHandler : MonoBehaviour {
     ///     Initialize input actions.
     /// </summary>
     private void SetupInputActions() {
-        PlayerInput = GetComponent<PlayerInput>();
-        var overridesJson = UIManager.Instance.ReferencePlayerActions.asset.SaveBindingOverridesAsJson();
-        PlayerInput.actions.LoadBindingOverridesFromJson(overridesJson);
+        InputActions = new PlayerInputActions();
 
-        Jump = new BufferedInputAction(PlayerInput.actions["jump"], inputBufferTime);
+        Slash = new BufferedInputAction(InputActions.Player.Slash, inputBufferTime);
+        Grab = InputActions.Player.Grab;
+        Flame = InputActions.Player.Flame;
 
-        Move = PlayerInput.actions["move"];
+        Inventory = InputActions.Player.Inventory;
+
+        Move = InputActions.Player.Move;
     }
 
     /// <summary>
     ///     Disable all input.
     /// </summary>
     public void Disable() {
-        PlayerInput.actions.Disable();
+        InputActions.asset.Disable();
     }
 
     /// <summary>
     ///     Enable all input.
     /// </summary>
     public void Enable() {
-        PlayerInput.actions.Enable();
+        InputActions.asset.Enable();
     }
 }

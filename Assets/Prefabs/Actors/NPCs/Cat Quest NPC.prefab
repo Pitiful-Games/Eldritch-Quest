@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6244184679062107248
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3850728049951508122, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+      propertyPath: m_Name
+      value: Cat Quest NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288218373064624536, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288218373064624536, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288218373064624536, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288218373064624536, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288218373064624536, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288218373064624536, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288218373064624536, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288218373064624536, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288218373064624536, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288218373064624536, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288218373064624536, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3850728049951508122, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4895192477868379909}
+  m_SourcePrefab: {fileID: 100100000, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+--- !u!1 &7194293849220510442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3850728049951508122, guid: caa7ea0de689f7d40b71064179f2ae24, type: 3}
+  m_PrefabInstance: {fileID: 6244184679062107248}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-4895192477868379909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7194293849220510442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba503a1596e9e9342b5db7afe2e7e2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoInteract: 0
+  dialogue: {fileID: 0}
+  quest: {fileID: 11400000, guid: 17ce1743a2a264b4e84da4e9143122bf, type: 2}
+  beforeStartQuestDialogue: {fileID: 11400000, guid: 78f1387157c02bf438ff94f9fbc420f4, type: 2}
+  afterStartQuestDialogue: {fileID: 11400000, guid: 83cfdb89e6de1fd4398ba1b2e6a04f0f, type: 2}
+  completedQuestDialogue: {fileID: 11400000, guid: f09fcdbc9ab1038409f5123f060c5273, type: 2}
