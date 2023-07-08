@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Cat Before Start Quest Dialogue
   m_EditorClassIdentifier: 
   pages:
-  - Hello, there stranger.
-  - Can you please save my kitty?
+  - Have you seen my dear kitten? She hasn't been back for a while and I'm starting
+    to worry about her.

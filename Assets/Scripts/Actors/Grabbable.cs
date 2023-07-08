@@ -24,6 +24,7 @@ public class Grabbable : MonoBehaviour {
     private void Update() {
         if (!Grabber) return;
         var distance = Grabber.transform.position - transform.position;
+        if (distance.magnitude < 1) return;
         body.velocity = distance * pullSpeed;
     }
 }

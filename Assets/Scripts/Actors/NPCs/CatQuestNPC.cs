@@ -3,6 +3,7 @@ public class CatQuestNPC : QuestNPC {
         var inventory = UIManager.Instance.GetUI<Inventory>();
         if (inventory.GetItem(0) != null) {
             inventory.ClearItem(0);
+            transform.Find("Cat").gameObject.SetActive(true);
             CompleteQuest();
         }
     }

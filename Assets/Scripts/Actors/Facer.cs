@@ -25,6 +25,12 @@ public class Facer : MonoBehaviour {
             (target.position.x < transform.position.x && transform.localScale.x > 0))
             Flip();
     }
+    
+    public void FaceDirection(float direction) {
+        if ((direction > 0 && transform.localScale.x < 0) ||
+            (direction < 0 && transform.localScale.x > 0))
+            Flip();
+    }
 
     /// <summary>
     ///     Check whether the actor should be flipped.
