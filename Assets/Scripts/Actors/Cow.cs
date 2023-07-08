@@ -26,13 +26,12 @@ public class Cow : MonoBehaviour {
 
     private void Update()
     {
-        Ray r = new Ray(transform.position, (transform.position - lastPos).normalized);
         Debug.DrawRay(transform.position, (transform.position - lastPos).normalized);
-        if (Physics2D.Raycast(transform.position, (transform.position - lastPos).normalized, 0.7f, mask)){
+        if (Physics2D.Raycast(transform.position, (transform.position - lastPos).normalized, 0.7f, mask) && pathFollower.pathCreator == remainingPath)
+        {
             pathFollower.travelSpeed = 0;
             lastDir *= -1;
         }
-
         lastPos = transform.position;
     }
 
@@ -40,7 +39,7 @@ public class Cow : MonoBehaviour {
     {
         pathFollower.pathCreator = initialPath;
         isSpooked = true;
-        lastDir = 1;
+        lastDir = -1;
         pickup.gameObject.SetActive(false);
     }
 
@@ -51,6 +50,7 @@ public class Cow : MonoBehaviour {
             pathFollower.travelSpeed = 0;
         }
         else{
+            transform.position = lastPos;
             pathFollower.travelSpeed = 0;
             detectRange.Detected -= OnDetect;
             col.enabled = false;
