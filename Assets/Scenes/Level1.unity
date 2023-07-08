@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 227306187}
   - component: {fileID: 227306186}
   - component: {fileID: 227306185}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FullColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1855,7 +1855,7 @@ GameObject:
   - component: {fileID: 246093549}
   - component: {fileID: 246093548}
   - component: {fileID: 246093547}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: RockColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14006,7 +14006,7 @@ GameObject:
   - component: {fileID: 1351041476}
   - component: {fileID: 1351041475}
   - component: {fileID: 1351041474}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: moveColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15575,7 +15575,7 @@ GameObject:
   - component: {fileID: 1432414658}
   - component: {fileID: 1432414657}
   - component: {fileID: 1432414656}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: moveColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
