@@ -4945,3 +4945,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ccabd2fcb0a1746b97dde1e3a64b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flameClip: {fileID: 8300000, guid: 00c0b157db6dad44c91b5453c7d32d5d, type: 3}

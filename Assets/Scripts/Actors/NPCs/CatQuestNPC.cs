@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class CatQuestNPC : QuestNPC {
     protected override void CheckQuestComplete() {
         var inventory = UIManager.Instance.GetUI<Inventory>();

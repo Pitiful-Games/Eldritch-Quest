@@ -32,6 +32,7 @@ public class Runner : MonoBehaviour {
         if (!IsRunning) return;
         if (footstepClips.Length <= 0) return;
 
+        footstepTimer += Time.deltaTime;
         if (footstepTimer >= footstepInterval) {
             footstepTimer = 0;
             AudioManager.Instance.SpawnAndPlay(footstepClips[Random.Range(0, footstepClips.Length)],

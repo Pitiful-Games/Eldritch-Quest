@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(ParticleSystem))]
 public class Flame : MonoBehaviour, ISpawnable {
+    [SerializeField] private AudioClip flameClip;
+    
     private Animator animator;
     private ParticleSystem particles;
 
@@ -26,6 +28,7 @@ public class Flame : MonoBehaviour, ISpawnable {
         timer = 0;
         
         animator.Play("Flame");
+        AudioManager.Instance.SpawnAndPlay(flameClip, transform.position);
         particles.Play();
     }
 

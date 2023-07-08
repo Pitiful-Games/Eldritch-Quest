@@ -1,3 +1,7 @@
 [submodule "Assets/Art"]
 	path = Assets/Art
 	url = https://github.com/Pitiful-Games/GMTK-GameJam-Assets.git
+
+[submodule "Assets/Plugins"]
+	path = Assets/Plugins
+	url = https://github.com/Pitiful-Games/GMTK-GameJam-Plugins.git

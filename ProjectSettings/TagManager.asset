@@ -21,9 +21,15 @@ TagManager:
   - Slashable
   - Grabbable
   - Item Pickup
+<<<<<<< HEAD
   - 
   - stonePath
   - fence
+=======
+  - Player Detector
+  - 
+  - 
+>>>>>>> 56eef5efd7dd421bf5f5753f4a66296dd62f7a90
   - 
   - 
   - 
