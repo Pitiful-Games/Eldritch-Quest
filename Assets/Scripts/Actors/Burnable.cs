@@ -6,11 +6,13 @@ public class Burnable : MonoBehaviour {
     [SerializeField] private GameObject unburntChild;
     [SerializeField] private GameObject burntChild;
     private ParticleSystem burnParticles;
+    private Collider2D col;
     
     private float burnTimer;
     
     private void Awake() {
         burnParticles = GetComponent<ParticleSystem>();
+        col = GetComponent<Collider2D>();
     }
 
     private void Update() {
@@ -20,6 +22,7 @@ public class Burnable : MonoBehaviour {
             burnParticles.Stop();
             if (unburntChild) unburntChild.SetActive(false);
             if (burntChild) burntChild.SetActive(true);
+            col.enabled = false;
         }
     }
 
