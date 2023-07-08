@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Serene_Village_48x48_149
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 124156789, guid: 9f71fd47baba19048b85d56f46eca826, type: 3}
+  m_Sprite: {fileID: -1077092017, guid: 6a526053a47270842acf24be53402199, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
