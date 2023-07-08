@@ -7,11 +7,17 @@ public class PathFollower : MonoBehaviour {
     
     public event OnPathEnd PathEnded;
 
-    public float tweenTime = 1;
+    public float tweenTime = 0;
     public PathCreator pathCreator;
     public float travelSpeed = 3;
+    public float defaultSpeed = 3;
     
     private float distanceTraveled;
+
+    private void Start()
+    {
+        travelSpeed = 0;
+    }
 
     private void Update() {
         if (!pathCreator) return;

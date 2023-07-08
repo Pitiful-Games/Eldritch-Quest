@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class ItemPickup : MonoBehaviour {
-    [SerializeField] private Item item;
+    [SerializeField] protected Item item;
 
     private SpriteRenderer renderer;
     
@@ -15,13 +15,13 @@ public class ItemPickup : MonoBehaviour {
         renderer.sprite = item.sprite;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    protected virtual void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
             PickUp();
         }
     }
 
-    private void PickUp() {
+    protected virtual void PickUp() {
         var inventory = UIManager.Instance.GetUI<Inventory>();
         if (inventory.AddItem(item)) {
             Destroy(gameObject);   

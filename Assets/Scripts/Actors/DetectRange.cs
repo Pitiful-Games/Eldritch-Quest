@@ -7,6 +7,7 @@ public class DetectRange : MonoBehaviour {
     public event OnDetect Detected;
     
     private void OnTriggerEnter2D(Collider2D other) {
+        //TODO: Player or grapple
         if (other.CompareTag("Player")) {
             Detected?.Invoke(other);
         }
