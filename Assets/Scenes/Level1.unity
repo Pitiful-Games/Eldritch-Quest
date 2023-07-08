@@ -390,7 +390,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -1910,7 +1910,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -6344,7 +6344,7 @@ TilemapCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -11072,11 +11072,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8783530981639647149, guid: e58b37e7018f01041bdea22ec255db6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.15
+      value: 30.500002
       objectReference: {fileID: 0}
     - target: {fileID: 8783530981639647149, guid: e58b37e7018f01041bdea22ec255db6a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.87
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8783530981639647149, guid: e58b37e7018f01041bdea22ec255db6a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14061,7 +14061,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
