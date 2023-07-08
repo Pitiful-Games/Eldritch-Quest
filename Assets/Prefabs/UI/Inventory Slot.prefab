@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4652344137137716062}
   - component: {fileID: 8182242471779861191}
   - component: {fileID: 7072483022667713953}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4931458924114145479}
   - component: {fileID: 5888436570651551902}
   - component: {fileID: 175605326022360661}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Inventory Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

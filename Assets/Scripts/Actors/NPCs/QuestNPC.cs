@@ -31,7 +31,7 @@ public abstract class QuestNPC : NPC {
     }
 
     private void StartQuest() {
-        var questLog = UIManager.Instance.OpenUI<QuestLog>();
+        var questLog = UIManager.Instance.GetUI<QuestLog>();
         questLog.StartQuest(quest);
         dialogue = afterStartQuestDialogue;
     }
@@ -39,7 +39,7 @@ public abstract class QuestNPC : NPC {
     protected virtual void CheckQuestComplete() { }
 
     protected void CompleteQuest() {
-        var questLog = UIManager.Instance.OpenUI<QuestLog>();
+        var questLog = UIManager.Instance.GetUI<QuestLog>();
         questLog.CompleteQuest(quest);
         dialogue = completedQuestDialogue;
     }

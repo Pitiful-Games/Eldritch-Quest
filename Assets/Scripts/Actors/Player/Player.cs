@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Runner))]
 [RequireComponent(typeof(FlameSpawner))]
-public class Player : MonoBehaviour, ISpawnable {
+public class Player : MonoBehaviour {
     #region Exposed Values
 
     [SerializeField] private Grabber grabberHorizontal;
@@ -32,7 +32,6 @@ public class Player : MonoBehaviour, ISpawnable {
     #region Components
 
     private Animator animator;
-    private Rigidbody2D body;
     private Facer facer;
     private FlameSpawner flameSpawner;
     private Runner runner;
@@ -47,7 +46,6 @@ public class Player : MonoBehaviour, ISpawnable {
 
     #region Tracked Values
 
-    private Vector2 lastVector;
     private Vector2 inputVector;
     private static readonly int AddColor = Shader.PropertyToID("_AddColor");
 
@@ -206,7 +204,6 @@ public class Player : MonoBehaviour, ISpawnable {
     }
 
     public void Move() {
-        lastVector = inputVector;
         inputVector = InputHandler.Move.ReadValue<Vector2>();
 
         if (inputVector.x != 0) {
@@ -229,7 +226,6 @@ public class Player : MonoBehaviour, ISpawnable {
     /// </summary>
     private void GetComponents() {
         animator = GetComponent<Animator>();
-        body = GetComponent<Rigidbody2D>();
         facer = GetComponent<Facer>();
         flameSpawner = GetComponent<FlameSpawner>();
         runner = GetComponent<Runner>();
@@ -244,31 +240,20 @@ public class Player : MonoBehaviour, ISpawnable {
         runner.StopRun();
     }
 
-    /// <inheritdoc />
-    public void OnCreate() { }
-
-    /// <inheritdoc />
-    public void OnSpawn() { }
-
-    /// <inheritdoc />
-    public void OnDespawn() { }
-
-    /// <inheritdoc />
-    public void OnDelete() { }
-
     public void AddQuestAddition(int questId) {
         switch (questId) {
             // Cat
             case 0:
-                transform.Find("Sprite").GetComponent<SpriteRenderer>().material
-                    .SetColor(AddColor, new Color(0.25f, 0.05f, 0.25f, 1));
+                blush.SetActive(true);
                 break;
             // Hug
             case 1:
                 flower.SetActive(true);
                 break;
+            // Pie
             case 2:
-                blush.SetActive(true);
+                transform.Find("Sprite").GetComponent<SpriteRenderer>().material
+                    .SetColor(AddColor, new Color(0.25f, 0.05f, 0.25f, 1));
                 break;
         }
     }
