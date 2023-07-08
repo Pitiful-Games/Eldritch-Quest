@@ -12,4 +12,9 @@ public static class AnimatorExtensions {
     public static bool IsFinished(this Animator animator) {
         return animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1;
     }
+
+    public static float GetCurrentTime(this Animator animator, int layer = 0) {
+        var animatorState = animator.GetCurrentAnimatorStateInfo(layer);
+        return animatorState.normalizedTime % 1;
+    }
 }
