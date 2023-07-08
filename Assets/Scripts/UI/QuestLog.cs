@@ -17,6 +17,7 @@ public class QuestLog : BaseUI {
         var questTmp = transform.GetChild(questId).GetComponent<TextMeshProUGUI>();
         questTmp.fontStyle = FontStyles.Strikethrough;
         questTmp.color = Color.gray;
+        FindObjectOfType<Player>().AddQuestAddition(quest.id);
         quests.Remove(quest);
     }
 }

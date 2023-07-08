@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
 public class Burnable : MonoBehaviour {
     [SerializeField] private float burnTime = 3;
+    [SerializeField] private GameObject unburntChild;
+    [SerializeField] private GameObject burntChild;
     private ParticleSystem burnParticles;
     
     private float burnTimer;
@@ -15,12 +17,13 @@ public class Burnable : MonoBehaviour {
         if (!burnParticles.isEmitting) return;
         burnTimer += Time.deltaTime;
         if (burnTimer >= burnTime) {
-            Destroy(gameObject);
+            burnParticles.Stop();
+            if (unburntChild) unburntChild.SetActive(false);
+            if (burntChild) burntChild.SetActive(true);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("Trigger enter: " + other.name);
         if (other.gameObject.layer == LayerMask.NameToLayer("Flame")) {
             Burn();
         }

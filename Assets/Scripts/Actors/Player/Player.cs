@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,11 +8,16 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Facer))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Runner))]
+[RequireComponent(typeof(FlameSpawner))]
 public class Player : MonoBehaviour, ISpawnable {
     #region Exposed Values
 
-    [SerializeField] private ParticleSystem flameParticles;
     [SerializeField] private Grabber grabber;
+    [SerializeField] private GameObject flower;
+    [SerializeField] private GameObject blush;
+    [SerializeField] private Transform flamePointUp;
+    [SerializeField] private Transform flamePointDown;
+    [SerializeField] private Transform flamePointHorizontal;
     
     #endregion
 
@@ -27,6 +31,7 @@ public class Player : MonoBehaviour, ISpawnable {
     private Animator animator;
     private Rigidbody2D body;
     private Facer facer;
+    private FlameSpawner flameSpawner;
     private Runner runner;
 
     private int moveParameter = Animator.StringToHash("Move");
@@ -41,6 +46,7 @@ public class Player : MonoBehaviour, ISpawnable {
 
     private float coyoteTimer;
     private Vector2 inputVector;
+    private static readonly int AddColor = Shader.PropertyToID("_AddColor");
 
     #endregion
     
@@ -124,7 +130,6 @@ public class Player : MonoBehaviour, ISpawnable {
         animator.SetBool(flameParameter, false);
         grabber.Release();
         grabber.gameObject.SetActive(false);
-        flameParticles.Stop();
         EnableMovement();
     }
 
@@ -141,7 +146,24 @@ public class Player : MonoBehaviour, ISpawnable {
     private void Flame() {
         DisableMovement();
         animator.SetBool(flameParameter, true);
-        flameParticles.Play();
+    }
+
+    public void CreateFlame() {
+        var flame = flameSpawner.Spawn();
+        var parent = flamePointHorizontal;
+        switch (animator.GetFloat(verticalParameter)) {
+            case > 0.5f:
+                parent = flamePointUp;
+                break;
+            case < -0.5f:
+                parent = flamePointDown;
+                break;
+        }
+
+        var flameTransform = flame.transform;
+        flameTransform.SetParent(parent);
+        flameTransform.localScale = Vector3.one;
+        flameTransform.localPosition = Vector3.zero;
     }
 
     /// <summary>
@@ -169,6 +191,7 @@ public class Player : MonoBehaviour, ISpawnable {
         animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
         facer = GetComponent<Facer>();
+        flameSpawner = GetComponent<FlameSpawner>();
         runner = GetComponent<Runner>();
         InputHandler = GetComponent<PlayerInputHandler>();
     }
@@ -185,15 +208,30 @@ public class Player : MonoBehaviour, ISpawnable {
     public void OnCreate() { }
 
     /// <inheritdoc />
-    public void OnSpawn() {
-        
-    }
+    public void OnSpawn() { }
 
     /// <inheritdoc />
     public void OnDespawn() { }
 
     /// <inheritdoc />
     public void OnDelete() { }
+
+    public void AddQuestAddition(int questId) {
+        switch (questId) {
+            // Cat
+            case 0:
+                transform.Find("Sprite").GetComponent<SpriteRenderer>().material
+                    .SetColor(AddColor, new Color(0.25f, 0.05f, 0.25f, 1));
+                break;
+            // Hug
+            case 1:
+                flower.SetActive(true);
+                break;
+            case 2:
+                blush.SetActive(true);
+                break;
+        }
+    }
 
     /// <summary>
     ///     Callback for when the player starts moving.
