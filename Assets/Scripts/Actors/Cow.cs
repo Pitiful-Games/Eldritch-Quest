@@ -2,40 +2,46 @@ using PathCreation;
 using UnityEngine;
 
 [RequireComponent(typeof(PathFollower))]
-public class Cow : ItemPickup {
+public class Cow : MonoBehaviour {
     [SerializeField] private DetectRange detectRange;
     [SerializeField] private PathCreator initialPath;
     [SerializeField] private PathCreator remainingPath;
-    
+
+    [SerializeField] private LayerMask mask;
+
     private PathFollower pathFollower;
+    private Vector3 lastPos;
+    private Collider2D col;
+    [SerializeField] private cowPickup pickup;
+
     private bool isSpooked;
-    private bool endReached;
     private int lastDir;
 
     private void Awake() {
         pathFollower = GetComponent<PathFollower>();
-        
+        col = GetComponent<Collider2D>();
         detectRange.Detected += OnDetect;
         pathFollower.PathEnded += OnPathEnd;
+    }
+
+    private void Update()
+    {
+        Ray r = new Ray(transform.position, (transform.position - lastPos).normalized);
+        Debug.DrawRay(transform.position, (transform.position - lastPos).normalized);
+        if (Physics2D.Raycast(transform.position, (transform.position - lastPos).normalized, 0.7f, mask)){
+            pathFollower.travelSpeed = 0;
+            lastDir *= -1;
+        }
+
+        lastPos = transform.position;
     }
 
     private void Start()
     {
         pathFollower.pathCreator = initialPath;
-        endReached = false;
         isSpooked = true;
         lastDir = 1;
-    }
-
-    protected override void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (endReached) base.OnTriggerEnter2D(collision);
-    }
-
-    protected override void PickUp()
-    {
-        var inventory = UIManager.Instance.GetUI<Inventory>();
-        inventory.AddItem(item);
+        pickup.gameObject.SetActive(false);
     }
 
     private void OnPathEnd(PathFollower follower) {
@@ -47,7 +53,8 @@ public class Cow : ItemPickup {
         else{
             pathFollower.travelSpeed = 0;
             detectRange.Detected -= OnDetect;
-            endReached = true;
+            col.enabled = false;
+            pickup.gameObject.SetActive(true);
         }
     }
 
@@ -62,7 +69,6 @@ public class Cow : ItemPickup {
             else
             {
                 pathFollower.travelSpeed = pathFollower.defaultSpeed * lastDir;
-                lastDir *= -1;
             }
         }
     }

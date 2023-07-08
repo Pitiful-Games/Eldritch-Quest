@@ -5,14 +5,14 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour {
     [SerializeField] protected Item item;
 
-    private SpriteRenderer renderer;
+    private SpriteRenderer spriteRenderer;
     
     private void Awake() {
-        renderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start() {
-        renderer.sprite = item.sprite;
+        spriteRenderer.sprite = item.sprite;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other) {
