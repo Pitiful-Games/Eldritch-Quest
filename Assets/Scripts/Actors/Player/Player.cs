@@ -44,7 +44,7 @@ public class Player : MonoBehaviour, ISpawnable {
 
     #region Tracked Values
 
-    private float coyoteTimer;
+    private Vector2 lastVector;
     private Vector2 inputVector;
     private static readonly int AddColor = Shader.PropertyToID("_AddColor");
 
@@ -58,6 +58,7 @@ public class Player : MonoBehaviour, ISpawnable {
     }
 
     private void Update() {
+        Move();
         facer.CheckFlip();
     }
 
@@ -79,14 +80,12 @@ public class Player : MonoBehaviour, ISpawnable {
     }
 
     private void EnableMovement() {
-        InputHandler.Move.performed += OnMoveStart;
-        InputHandler.Move.canceled += OnMoveStop;
+        InputHandler.Move.Enable();
     }
     
     private void DisableMovement() {
         StopMovement();
-        InputHandler.Move.performed -= OnMoveStart;
-        InputHandler.Move.canceled -= OnMoveStop;
+        InputHandler.Move.Disable();
     }
     
     /// <summary>
@@ -123,7 +122,7 @@ public class Player : MonoBehaviour, ISpawnable {
             Slash();
         }
     }
-
+    
     public void ResetActions() {
         animator.SetBool(slashParameter, false);
         animator.SetBool(grabParameter, false);
@@ -184,6 +183,25 @@ public class Player : MonoBehaviour, ISpawnable {
         InputHandler.Inventory.performed -= OnInventoryOpen;
     }
 
+    public void Move() {
+        lastVector = inputVector;
+        inputVector = InputHandler.Move.ReadValue<Vector2>();
+
+        if (inputVector.x != 0) {
+            animator.SetFloat(verticalParameter, 0);
+        } else if (inputVector.y != 0) {
+            animator.SetFloat(verticalParameter, inputVector.y);
+        }
+
+        var moving = inputVector.magnitude > 0.1f;
+        animator.SetBool(moveParameter, moving);
+        if (moving) {
+            runner.Run(inputVector);
+        } else {
+            runner.StopRun();
+        }
+    }
+
     /// <summary>
     ///     Get all components on the player.
     /// </summary>
@@ -232,27 +250,7 @@ public class Player : MonoBehaviour, ISpawnable {
                 break;
         }
     }
-
-    /// <summary>
-    ///     Callback for when the player starts moving.
-    /// </summary>
-    /// <param name="context">The input action callback context.</param>
-    private void OnMoveStart(InputAction.CallbackContext context) {
-        inputVector = context.ReadValue<Vector2>();
-        animator.SetFloat(verticalParameter, inputVector.y);
-        animator.SetBool(moveParameter, inputVector.magnitude > 0.1f);
-        runner.Run(inputVector);
-    }
-
-    /// <summary>
-    ///     Callback for when the player stops moving.
-    /// </summary>
-    /// <param name="context">The input action callback context.</param>
-    private void OnMoveStop(InputAction.CallbackContext context) {
-        animator.SetBool(moveParameter, false);
-        runner.StopRun();
-    }
-
+    
     /// <summary>
     ///     Assign the player as the camera controller's current target.
     /// </summary>
