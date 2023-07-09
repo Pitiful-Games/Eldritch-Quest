@@ -31,7 +31,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.625
+        time: 1
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -52,9 +52,9 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 21300000, guid: 901893dab427c384389f0ff6b50469d8, type: 3}
-    - time: 0.29166666
+    - time: 0.45833334
       value: {fileID: 21300000, guid: 55c9677bc2d83ae40912c4b843275fd8, type: 3}
-    - time: 0.5833333
+    - time: 0.9166667
       value: {fileID: 21300000, guid: 55c9677bc2d83ae40912c4b843275fd8, type: 3}
     attribute: m_Sprite
     path: Sprite
@@ -65,7 +65,7 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 21300000, guid: 2c13cf0e003e801428a5fa61099c76ce, type: 3}
-    - time: 0.29166666
+    - time: 0.45833334
       value: {fileID: 21300000, guid: 603329603fb464549bb6a0306c37cc1b, type: 3}
     attribute: m_Sprite
     path: Sprite/Quest Additions/Flower
@@ -76,7 +76,7 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 21300000, guid: 044844cb62018d142bab50c38dce6186, type: 3}
-    - time: 0.29166666
+    - time: 0.45833334
       value: {fileID: 21300000, guid: 876a2cecb382533459f01c2578314752, type: 3}
     attribute: m_Sprite
     path: Sprite/Quest Additions/Blush
@@ -139,7 +139,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.625
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -169,7 +169,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.625
+        time: 1
         value: 1
         inSlope: Infinity
         outSlope: Infinity
