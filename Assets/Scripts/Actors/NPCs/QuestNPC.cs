@@ -37,6 +37,7 @@ public abstract class QuestNPC : NPC {
         var questLog = UIManager.Instance.GetUI<QuestLog>();
         questLog.StartQuest(quest);
         dialogue = afterStartQuestDialogue;
+        AudioManager.Instance.PlayMusic(AudioManager.Music.Hard);
     }
 
     protected virtual void CheckQuestComplete() { }
@@ -45,5 +46,6 @@ public abstract class QuestNPC : NPC {
         var questLog = UIManager.Instance.GetUI<QuestLog>();
         questLog.CompleteQuest(quest);
         dialogue = completedQuestDialogue;
+        AudioManager.Instance.PlayMusic(AudioManager.Music.Soft);
     }
 }

@@ -47,6 +47,7 @@ public class MainMenu : MonoBehaviour, IDataPersistence {
 
     private void OnEnable() {
         UIManager.Instance.Actions.Cancel.performed += _ => Back();
+        AudioManager.Instance.PlayMusic(AudioManager.Music.Menu);
     }
 
     /// <inheritdoc />
@@ -94,5 +95,6 @@ public class MainMenu : MonoBehaviour, IDataPersistence {
     /// </summary>
     public void LoadLastSaveSpot() {
         GameManager.Instance.LoadSaveSpot(lastSaveScene, lastSavePosition);
+        AudioManager.Instance.PlayMusic(AudioManager.Music.Soft);
     }
 }

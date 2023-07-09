@@ -4,16 +4,42 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : Singleton<AudioManager> {
     private AudioPlayerPool audioPlayerPool;
-    private AudioSource musicSource;
+    [SerializeField] private AudioSource MenuMusic;
+    [SerializeField] private AudioSource HardMusic;
+    [SerializeField] private AudioSource SoftMusic;
+
+    public enum Music{ Menu, Hard, Soft}
 
     protected override void OnAwake() {
         audioPlayerPool = GetComponent<AudioPlayerPool>();
-        musicSource = GetComponent<AudioSource>();
+    }
+    private void Start()
+    {
+        PlayMusic(Music.Menu);
+    }
+
+    public void PlayMusic(Music clip) {
+        PauseMusic();
+        switch (clip)
+        {
+            case Music.Menu:
+                MenuMusic.Play();
+                break;
+            case Music.Hard:
+                HardMusic.Play();
+                break;
+            case Music.Soft:
+                SoftMusic.Play();
+                break;
+            default:
+                break;
+        }
     }
     
-    public void PlayMusic(AudioClip clip) {
-        musicSource.clip = clip;
-        musicSource.Play();
+    private void PauseMusic(){
+        MenuMusic.Pause();
+        HardMusic.Pause();
+        SoftMusic.Pause();
     }
 
     public void SpawnAndPlay(AudioClip clip, Vector3 spawnPosition, float pitchMin = 1, float pitchMax = 1) {
