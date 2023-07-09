@@ -50,9 +50,7 @@ public class GameManager : Singleton<GameManager> {
         
         LevelStarted?.Invoke();
         
-        Debug.Log("FADING OUT");
         yield return fader.FadeOut();
-        Debug.Log("FADED OUT");
     }
 
     /// <summary>

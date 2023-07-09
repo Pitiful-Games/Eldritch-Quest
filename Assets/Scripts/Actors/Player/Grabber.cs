@@ -5,8 +5,6 @@ public class Grabber : MonoBehaviour {
     [SerializeField] private RandomAudioClipSelector grabSelector;
     [SerializeField] private Animator parentAnimator;
 
-    private AnimatorStateInfo animatorState => parentAnimator.GetCurrentAnimatorStateInfo(0);
-
     private List<Grabbable> grabbed = new();
     
     private void OnTriggerEnter2D(Collider2D other) {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,9 +39,18 @@ public class MainMenu : MonoBehaviour, IDataPersistence {
 
     private Vector2 lastSavePosition;
 
+    private Camera uiCam;
+
+    private void Awake() {
+        uiCam = UIManager.Instance.GetComponentInChildren<Camera>();
+        GetComponentInChildren<Canvas>().worldCamera = uiCam;
+    }
+
     private void Start() {
         if (Application.platform == RuntimePlatform.WebGLPlayer) quitButton.gameObject.SetActive(false);
-
+        
+        uiCam.orthographic = false;
+        
         // Initially add home page to stack
         menuStack.Push(homePage);
     }
@@ -48,6 +58,10 @@ public class MainMenu : MonoBehaviour, IDataPersistence {
     private void OnEnable() {
         UIManager.Instance.Actions.Cancel.performed += _ => Back();
         AudioManager.Instance.PlayMusic(AudioManager.Music.Menu);
+    }
+
+    private void OnDestroy() {
+        uiCam.orthographic = true;
     }
 
     /// <inheritdoc />

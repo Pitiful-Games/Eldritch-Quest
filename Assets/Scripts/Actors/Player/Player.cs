@@ -219,6 +219,7 @@ public class Player : MonoBehaviour, IDataPersistence {
     }
 
     public void Move() {
+        if (!InputHandler.IsEnabled) return;
         inputVector = InputHandler.Move.ReadValue<Vector2>();
 
         if (inputVector.x != 0) {
