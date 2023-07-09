@@ -30869,7 +30869,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2041705419764467599, guid: e82cc92b91cc2fa4481cdb189b4a6b78, type: 3}
       propertyPath: m_Name
-      value: Bucket of Milk (1)
+      value: Raspberry
       objectReference: {fileID: 0}
     - target: {fileID: 2816600083809604862, guid: e82cc92b91cc2fa4481cdb189b4a6b78, type: 3}
       propertyPath: m_Sprite
