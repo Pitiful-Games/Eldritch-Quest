@@ -7,17 +7,16 @@ public class QuestLog : BaseUI {
     private List<Quest> quests = new();
 
     public void StartQuest(Quest quest) {
-        var questTmp = Instantiate(questPrefab.gameObject, transform).GetComponent<TextMeshProUGUI>();
+        var questTmp = Instantiate(questPrefab, transform);
         questTmp.text = quest.text;
         quests.Add(quest);
     }
     
     public void CompleteQuest(Quest quest) {
-        var questId = quest.id;
-        var questTmp = transform.GetChild(questId).GetComponent<TextMeshProUGUI>();
+        var childIndex = quests.IndexOf(quest);
+        var questTmp = transform.GetChild(childIndex).GetComponent<TextMeshProUGUI>();
         questTmp.fontStyle = FontStyles.Strikethrough;
         questTmp.color = Color.gray;
         FindObjectOfType<Player>().AddQuestAddition(quest.id);
-        quests.Remove(quest);
     }
 }

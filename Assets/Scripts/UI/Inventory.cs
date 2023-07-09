@@ -16,7 +16,7 @@ public class Inventory : BaseUI {
 
     private void Awake() {
         for (var i = 0; i < numSlots; i++) {
-            slots.Add(Instantiate(slotPrefab, transform).GetComponent<InventorySlot>());
+            slots.Add(Instantiate(slotPrefab, transform));
         }
     }
 
@@ -52,10 +52,10 @@ public class Inventory : BaseUI {
         if (slotNum >= 0) {
             SetItem(slotNum, item);
             return true;
-        } else {
-            Debug.Log("Inventory is full!");
-            return false;
         }
+
+        Debug.Log("Inventory is full!");
+        return false;
     }
 
     public void SetItem(int slotNum, Item item) {
@@ -64,14 +64,14 @@ public class Inventory : BaseUI {
     }
 
     public void ClearItem(int itemId) {
-        var slotNum = slots.FindIndex(slot => slot.Item.id == itemId);
+        var slotNum = slots.FindIndex(slot => slot.Item != null && slot.Item.id == itemId);
         if (slotNum >= 0) {
             slots[slotNum].ClearItem();   
         }
     }
 
     public Item GetItem(int itemId) {
-        return slots.Select(slot => slot.Item).DefaultIfEmpty().First();
+        return slots.Select(slot => slot.Item).FirstOrDefault(item => item != null && item.id == itemId);
     }
 
     private void CheckSlotNumber(int slotNum) {

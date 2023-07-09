@@ -25,7 +25,7 @@ public class Grabber : MonoBehaviour {
 
     public void Reach() {
         grabSelector.PlayRandomClip(transform.position);
-        var duration = animatorState.length / 2;
+        var duration = parentAnimator.GetClipLength("Grab H") / 2;
         transform.localScale = new Vector3(1 / 3.0f, 1, 1);
         iTween.ScaleTo(gameObject, iTween.Hash(
             "name", "Reach",
@@ -43,8 +43,9 @@ public class Grabber : MonoBehaviour {
 
     public void Retract() {
         iTween.StopByName("Reach");
-        var duration = animatorState.length - parentAnimator.GetCurrentTime();
+        var duration = parentAnimator.GetClipLength("Grab H") - parentAnimator.GetCurrentTime();
         iTween.ScaleTo(gameObject, iTween.Hash(
+            "name", "Reach",
             "x", 1 / 3.0f,
             "time", duration,
             "oncomplete", "OnRetractComplete"

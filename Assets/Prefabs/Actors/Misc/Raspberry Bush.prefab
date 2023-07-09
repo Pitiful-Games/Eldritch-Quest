@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1060875167046815119
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570233850328292875, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685700028942308278, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 10d668bffb58ede4d98a78329df4129e, type: 3}
+    - target: {fileID: 3750133717537260145, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dc2d7521da337b24c891f95161fd7651, type: 3}
+    - target: {fileID: 4680575340326643045, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4680575340326643045, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6551610200919173457, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_Name
+      value: Raspberry Bush
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6551610200919173457, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4493681192257522642}
+  m_SourcePrefab: {fileID: 100100000, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+--- !u!1 &6076203156768236766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6551610200919173457, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+  m_PrefabInstance: {fileID: 1060875167046815119}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4493681192257522642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6076203156768236766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f1d67716f392144bb1272142f2d9e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raspberryPickup: {fileID: 4349460448064877938, guid: de61a9e08ba44ca4786141f72ed278d1, type: 3}

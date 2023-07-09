@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca70b6b36d817b140aae17a3caf8d27d, type: 3}
   m_Name: Granny Quest
   m_EditorClassIdentifier: 
-  id: 1
+  id: 2
   text: Help granny bake a pie.

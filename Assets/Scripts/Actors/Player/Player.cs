@@ -134,6 +134,8 @@ public class Player : MonoBehaviour {
         grabberUp.gameObject.SetActive(false);
         grabberDown.Release();
         grabberDown.gameObject.SetActive(false);
+        transform.Find("Grabbers/Left Arm Down").gameObject.SetActive(false);
+        transform.Find("Grabbers/Left Arm Up").gameObject.SetActive(false);
         EnableMovement();
     }
 
@@ -148,14 +150,20 @@ public class Player : MonoBehaviour {
 
     private void Grab() {
         DisableMovement();
-        var grabber = animator.GetFloat(verticalParameter) switch {
-            > 0.5f => grabberUp,
-            < -0.5f => grabberDown,
-            _ => grabberHorizontal
-        };
+        var grabber = grabberHorizontal;
+        switch (animator.GetFloat(verticalParameter)) {
+            case > 0.5f:
+                grabber = grabberUp;
+                transform.Find("Grabbers/Left Arm Up").gameObject.SetActive(true);
+                break;
+            case < -0.5f:
+                grabber = grabberDown;
+                transform.Find("Grabbers/Left Arm Down").gameObject.SetActive(true);
+                break;
+        }
         grabber.gameObject.SetActive(true);
-        grabber.Reach();
         animator.SetBool(grabParameter, true);
+        grabber.Reach();
     }
     
     private void Flame() {
@@ -246,7 +254,7 @@ public class Player : MonoBehaviour {
             case 0:
                 blush.SetActive(true);
                 break;
-            // Hug
+            // Hug, flower
             case 1:
                 flower.SetActive(true);
                 break;

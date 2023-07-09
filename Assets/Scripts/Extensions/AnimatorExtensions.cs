@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -16,5 +17,11 @@ public static class AnimatorExtensions {
     public static float GetCurrentTime(this Animator animator, int layer = 0) {
         var animatorState = animator.GetCurrentAnimatorStateInfo(layer);
         return animatorState.normalizedTime % 1;
+    }
+
+    public static float GetClipLength(this Animator animator, string clipName) {
+        var clips = animator.runtimeAnimatorController.animationClips;
+        var clip = clips.FirstOrDefault(clip => clip.name == clipName);
+        return clip ? clip.length : -1;
     }
 }

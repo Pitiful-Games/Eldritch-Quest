@@ -6,6 +6,7 @@ public abstract class QuestNPC : NPC {
     [SerializeField] private Dialogue beforeStartQuestDialogue;
     [SerializeField] private Dialogue afterStartQuestDialogue;
     [SerializeField] private Dialogue completedQuestDialogue;
+    [SerializeField] private Dialogue finalDialogue;
 
     private void Start() {
         dialogue = beforeStartQuestDialogue;
@@ -27,6 +28,8 @@ public abstract class QuestNPC : NPC {
         
         if (dialogue == beforeStartQuestDialogue) {
             StartQuest();
+        } else if (dialogue == completedQuestDialogue) {
+            dialogue = finalDialogue;
         }
     }
 
