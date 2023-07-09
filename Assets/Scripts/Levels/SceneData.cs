@@ -8,7 +8,8 @@ public static class SceneData {
     ///     All the scenes in the game that are not gameplay.
     /// </summary>
     private static readonly List<string> NonGameplayScenes = new() {
-        "MainMenu"
+        "MainMenu",
+        "GameWin",
     };
 
     /// <summary>

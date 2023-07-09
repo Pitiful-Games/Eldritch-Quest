@@ -54,6 +54,8 @@ public class Inventory : BaseUI {
             return true;
         }
 
+        Open();
+
         Debug.Log("Inventory is full!");
         return false;
     }

@@ -22,7 +22,8 @@ public class DialogueManager : BaseUI {
     public override void Open() {
         base.Open();
 
-        FindObjectOfType<PlayerInputHandler>(true).Disable();
+        var player = FindObjectOfType<Player>();
+        if (player) player.enabled = false;
 
         if (UIManager.Instance) UIManager.Instance.Actions.Submit.performed += OnSubmit;
     }
@@ -33,8 +34,14 @@ public class DialogueManager : BaseUI {
 
         if (UIManager.Instance) UIManager.Instance.Actions.Submit.performed -= OnSubmit;
 
-        FindObjectOfType<PlayerInputHandler>(true)?.Enable();
+        Debug.Log("Dialogue enable");
+        var player = FindObjectOfType<Player>();
+        if (player) player.enabled = true;
 
+        if (UIManager.Instance.GetUI<QuestLog>().AllQuestsComplete) {
+            GameManager.Instance.ChangeScene("GameWin");
+        }
+        
         base.Close();
     }
 
