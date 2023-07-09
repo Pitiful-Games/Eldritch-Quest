@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.8, y: 0.2}
   m_EdgeRadius: 0
 --- !u!1 &3279822710150144808
 GameObject:
@@ -4946,3 +4946,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flameClip: {fileID: 8300000, guid: 00c0b157db6dad44c91b5453c7d32d5d, type: 3}
+  colider: {fileID: 2928228143855810633}
