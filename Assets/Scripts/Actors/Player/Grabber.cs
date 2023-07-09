@@ -12,7 +12,7 @@ public class Grabber : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.TryGetComponent<Grabbable>(out var grabbable)) {
             Grab(grabbable);
-        } else if (other.gameObject.layer == LayerMask.NameToLayer("Terrain")) {
+        } else {
             Retract();
         }
     }
