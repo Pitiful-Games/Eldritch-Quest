@@ -7,6 +7,7 @@ public abstract class QuestNPC : NPC {
     [SerializeField] private Dialogue afterStartQuestDialogue;
     [SerializeField] private Dialogue completedQuestDialogue;
     [SerializeField] private Dialogue finalDialogue;
+    [SerializeField] private AudioClip dialogueSound;
 
     private void Start() {
         dialogue = beforeStartQuestDialogue;
@@ -16,6 +17,8 @@ public abstract class QuestNPC : NPC {
         if (dialogue == afterStartQuestDialogue) {
             CheckQuestComplete();
         }
+
+        AudioManager.Instance.SpawnAndPlay(dialogueSound, transform.position, 0.85f, 1.15f);
         
         base.Interact();
 
@@ -34,7 +37,7 @@ public abstract class QuestNPC : NPC {
     }
 
     private void StartQuest() {
-        var questLog = UIManager.Instance.GetUI<QuestLog>();
+        var questLog = UIManager.Instance.OpenUI<QuestLog>();
         questLog.StartQuest(quest);
         dialogue = afterStartQuestDialogue;
         AudioManager.Instance.PlayMusic(AudioManager.Music.Hard);
@@ -43,7 +46,7 @@ public abstract class QuestNPC : NPC {
     protected virtual void CheckQuestComplete() { }
 
     protected void CompleteQuest() {
-        var questLog = UIManager.Instance.GetUI<QuestLog>();
+        var questLog = UIManager.Instance.OpenUI<QuestLog>();
         questLog.CompleteQuest(quest);
         dialogue = completedQuestDialogue;
         AudioManager.Instance.PlayMusic(AudioManager.Music.Soft);

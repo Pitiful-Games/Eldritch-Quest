@@ -14,8 +14,8 @@ public class RandomAudioClipSelector : ScriptableObject {
         return audioClips[Random.Range(0, audioClips.Length)];
     }
 
-    public void PlayRandomClip(Vector3 spawnPosition, float pitchMin = 0.85f, float pitchMax = 1.15f) {
+    public void PlayRandomClip(Vector3 spawnPosition, float pitchMin = 0.85f, float pitchMax = 1.15f, float minVolume = 1, float maxVolume = 1) {
         var randomClip = GetRandomClip();
-        AudioManager.Instance.SpawnAndPlay(randomClip, spawnPosition, pitchMin, pitchMax);
+        AudioManager.Instance.SpawnAndPlay(randomClip, spawnPosition, pitchMin, pitchMax, minVolume, maxVolume);
     }
 }

@@ -33,7 +33,7 @@ public class DialogueManager : BaseUI {
 
         if (UIManager.Instance) UIManager.Instance.Actions.Submit.performed -= OnSubmit;
 
-        FindObjectOfType<PlayerInputHandler>(true).Enable();
+        FindObjectOfType<PlayerInputHandler>(true)?.Enable();
 
         base.Close();
     }

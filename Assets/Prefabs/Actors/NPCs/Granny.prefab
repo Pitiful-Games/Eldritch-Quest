@@ -148,3 +148,4 @@ MonoBehaviour:
   afterStartQuestDialogue: {fileID: 11400000, guid: 9bb10e559bf0b454e8d2e2a6f9479dae, type: 2}
   completedQuestDialogue: {fileID: 11400000, guid: b204be79c15aa2f4c82195e6bdd2184e, type: 2}
   finalDialogue: {fileID: 11400000, guid: 36b088c3ff457614fa0e55f32bed100a, type: 2}
+  dialogueSound: {fileID: 8300000, guid: e3befea9e1f236f42b475796021c0c0d, type: 3}

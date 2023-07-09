@@ -28,6 +28,18 @@ public class UIManager : Singleton<UIManager> {
         inputActions = new UIInputActions();
         inputActions.Enable();
         SceneManager.activeSceneChanged += OnSceneChange;
+
+        // Pre-instantiate UIs so that they are in the proper order.
+        PreInstantiateUIs();
+    }
+    
+    private void PreInstantiateUIs() {
+        // UIs should be closed initially.
+        CloseUI<Inventory>();
+        CloseUI<QuestLog>();
+        CloseUI<DialogueManager>();
+        CloseUI<PauseMenu>();
+        CloseUI<Fader>();
     }
 
     /// <summary>
