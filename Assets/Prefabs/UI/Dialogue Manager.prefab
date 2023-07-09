@@ -150,8 +150,8 @@ MonoBehaviour:
     eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
     in culpa qui officia deserunt mollit anim id est laborum.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 59166a15012b76147b17e4fc5b18b7fc, type: 2}
-  m_sharedMaterial: {fileID: 5505463450564517118, guid: 59166a15012b76147b17e4fc5b18b7fc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -240,6 +240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5702245737249640930}
   - component: {fileID: 147620973503254199}
+  - component: {fileID: 7993238729274497745}
   m_Layer: 5
   m_Name: Dialogue Manager
   m_TagString: Untagged
@@ -282,3 +283,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typer: {fileID: 1227084001791953809}
+--- !u!210 &7993238729274497745
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8961341335215325045}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 999
+  m_SortAtRoot: 0

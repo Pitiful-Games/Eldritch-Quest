@@ -5,7 +5,9 @@ public class RaspberryBush : Slashable {
     
     public static int NumRaspberryBushes { get; private set; }
 
-    private void Awake() {
+    protected override void Awake() {
+        base.Awake();
+        
         NumRaspberryBushes = FindObjectsOfType<RaspberryBush>().Length;
     }
 

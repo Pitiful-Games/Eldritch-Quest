@@ -9,7 +9,7 @@ public class Slashable : MonoBehaviour {
     private AudioSource audioSource;
     private Collider2D col;
 
-    private void Awake() {
+    protected virtual void Awake() {
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = slashSoundSelector.GetRandomClip();
     }
