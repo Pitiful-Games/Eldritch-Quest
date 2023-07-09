@@ -10,24 +10,25 @@ public class Cow : MonoBehaviour {
     [SerializeField] private PathCreator remainingPath;
 
     [SerializeField] private LayerMask mask;
+    [SerializeField] private LayerMask stompMask;
 
     private Animator animator;
     private Facer facer;
     private PathFollower pathFollower;
     private Vector3 lastPos;
-    private Collider2D col;
-    [SerializeField] private cowPickup pickup;
+       
+    [SerializeField] private ItemPickup pickup;
 
     private static int spookedParameter = Animator.StringToHash("Spooked");
 
     private bool isSpooked;
     private int lastDir;
+    private bool ended;
 
     private void Awake() {
         animator = GetComponent<Animator>();
         facer = GetComponent<Facer>();
         pathFollower = GetComponent<PathFollower>();
-        col = GetComponent<Collider2D>();
         detectRange.Detected += OnDetect;
         pathFollower.PathEnded += OnPathEnd;
     }
@@ -36,10 +37,18 @@ public class Cow : MonoBehaviour {
         var direction = (transform.position - lastPos).normalized;
         facer.FaceDirection(direction.x);
         Debug.DrawRay(transform.position, direction);
-        if (Physics2D.Raycast(transform.position, direction, 0.7f, mask) && pathFollower.pathCreator == remainingPath)
+        if (Physics2D.Raycast(transform.position, direction, 0.4f, mask) && pathFollower.pathCreator == remainingPath)
         {
             pathFollower.travelSpeed = 0;
             lastDir *= -1;
+        }
+        if (Physics2D.Raycast(transform.position, direction, 0.7f, stompMask) && pathFollower.pathCreator == remainingPath && !ended)
+        {
+            ended = true;
+            pathFollower.travelSpeed = 0;
+            transform.position = lastPos;
+            detectRange.Detected -= OnDetect;
+            pickup.gameObject.SetActive(true);
         }
         lastPos = transform.position;
     }
@@ -48,6 +57,7 @@ public class Cow : MonoBehaviour {
     {
         pathFollower.pathCreator = initialPath;
         isSpooked = true;
+        ended = false;
         lastDir = -1;
         pickup.gameObject.SetActive(false);
     }
@@ -58,12 +68,6 @@ public class Cow : MonoBehaviour {
         if (pathFollower.pathCreator != remainingPath)
         {
             pathFollower.ChangePath(remainingPath);
-        }
-        else{
-            transform.position = lastPos;
-            detectRange.Detected -= OnDetect;
-            col.enabled = false;
-            pickup.gameObject.SetActive(true);
         }
     }
 
