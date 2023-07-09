@@ -7,6 +7,7 @@ public abstract class QuestNPC : NPC {
     [SerializeField] private Dialogue afterStartQuestDialogue;
     [SerializeField] private Dialogue completedQuestDialogue;
     [SerializeField] private Dialogue finalDialogue;
+    [SerializeField] private AudioClip dialogueSound;
 
     private void Start() {
         dialogue = beforeStartQuestDialogue;
@@ -16,6 +17,8 @@ public abstract class QuestNPC : NPC {
         if (dialogue == afterStartQuestDialogue) {
             CheckQuestComplete();
         }
+
+        AudioManager.Instance.SpawnAndPlay(dialogueSound, transform.position, 0.85f, 1.15f);
         
         base.Interact();
 

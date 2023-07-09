@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unslashedChild: {fileID: 9046945143922830233}
   slashedChild: {fileID: 2738719475610914168}
+  slashSoundSelector: {fileID: 11400000, guid: 1870cae0283f15445a9539de6787316a, type: 2}
   raspberryPickup: {fileID: 4349460448064877938, guid: de61a9e08ba44ca4786141f72ed278d1, type: 3}
 --- !u!1 &9046945143922830233 stripped
 GameObject:

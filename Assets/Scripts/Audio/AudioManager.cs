@@ -42,11 +42,13 @@ public class AudioManager : Singleton<AudioManager> {
         SoftMusic.Pause();
     }
 
-    public void SpawnAndPlay(AudioClip clip, Vector3 spawnPosition, float pitchMin = 1, float pitchMax = 1) {
+    public void SpawnAndPlay(AudioClip clip, Vector3 spawnPosition, float pitchMin = 1, float pitchMax = 1, float minVolume = 1, float maxVolume = 1) {
         var audioPlayer = audioPlayerPool.Spawn();
         audioPlayer.transform.position = spawnPosition;
         audioPlayer.Clip = clip;
-        audioPlayer.GetComponent<AudioSource>().pitch = Random.Range(pitchMin, pitchMax);
+        var audioSource = audioPlayer.GetComponent<AudioSource>();
+        audioSource.pitch = Random.Range(pitchMin, pitchMax);
+        audioSource.volume = Random.Range(minVolume, maxVolume);
     }
 
     public void DespawnPlayer(PlayAndDespawn audioPlayer) {
