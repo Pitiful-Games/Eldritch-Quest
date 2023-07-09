@@ -5,10 +5,12 @@ using UnityEngine;
 public class AudioManager : Singleton<AudioManager> {
     private AudioPlayerPool audioPlayerPool;
     [SerializeField] private AudioSource MenuMusic;
+    [SerializeField] private AudioSource MenuMusicDrums;
     [SerializeField] private AudioSource HardMusic;
+    [SerializeField] private AudioSource HardMusicTwo;
     [SerializeField] private AudioSource SoftMusic;
 
-    public enum Music{ Menu, Hard, Soft}
+    public enum Music{ Menu, Menud, Hard, Soft}
 
     protected override void OnAwake() {
         audioPlayerPool = GetComponent<AudioPlayerPool>();
@@ -25,8 +27,13 @@ public class AudioManager : Singleton<AudioManager> {
             case Music.Menu:
                 MenuMusic.Play();
                 break;
+            case Music.Menud:
+                MenuMusicDrums.Play();
+                break;
             case Music.Hard:
-                HardMusic.Play();
+                float r = Random.value;
+                if (r > 0.5f) HardMusic.Play();
+                else HardMusicTwo.Play();
                 break;
             case Music.Soft:
                 SoftMusic.Play();
@@ -38,7 +45,9 @@ public class AudioManager : Singleton<AudioManager> {
     
     private void PauseMusic(){
         MenuMusic.Pause();
+        MenuMusicDrums.Pause();
         HardMusic.Pause();
+        HardMusicTwo.Pause();
         SoftMusic.Pause();
     }
 
