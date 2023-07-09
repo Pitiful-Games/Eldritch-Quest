@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 ///     Controller for a player.
@@ -9,7 +10,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Runner))]
 [RequireComponent(typeof(FlameSpawner))]
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour, IDataPersistence {
     #region Exposed Values
 
     [SerializeField] private Grabber grabberHorizontal;
@@ -272,5 +273,15 @@ public class Player : MonoBehaviour {
     private void AssignPlayer() {
         FindObjectOfType<CameraController>(true).Target = transform;
         DontDestroyOnLoad(this);
+    }
+
+    public void LoadData(SaveData saveData) { }
+
+    public void SaveData(SaveData saveData) {
+        var activeScene = SceneManager.GetActiveScene().name;
+        if (SceneData.IsGameplayScene(activeScene)) {
+            saveData.saveScene = activeScene;
+        } 
+        saveData.savePosition = transform.position;
     }
 }

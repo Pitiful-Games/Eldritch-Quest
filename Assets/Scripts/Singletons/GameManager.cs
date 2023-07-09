@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -50,21 +47,21 @@ public class GameManager : Singleton<GameManager> {
         yield return SceneManager.LoadSceneAsync(sceneName);
         SaveDataManager.Instance.LoadGame();
         Player.gameObject.SetActive(SceneData.IsGameplayScene(sceneName));
-        if (SceneData.IsGameplayScene(sceneName)) {
-            Player.transform.position = FindObjectOfType<PlayerPositioner>().transform.position;
-        }
         
         LevelStarted?.Invoke();
         
+        Debug.Log("FADING OUT");
         yield return fader.FadeOut();
+        Debug.Log("FADED OUT");
     }
 
     /// <summary>
     ///     Load the player at a save spot.
     /// </summary>
     /// <param name="saveScene">The saved scene to load.</param>
-    public void LoadSaveSpot(string saveScene) {
+    public void LoadSaveSpot(string saveScene, Vector2 savePosition) {
         ChangeScene(saveScene, SceneTransitionType.MainMenu);
+        Player.transform.position = savePosition;
     }
 
     /// <summary>

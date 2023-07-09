@@ -1,20 +1,20 @@
 using UnityEngine;
 
-public class RaspberryBush : MonoBehaviour {
+public class RaspberryBush : Slashable {
     [SerializeField] private ItemPickup raspberryPickup;
     
-    public static int NumRaspberryBushes { get; set; }
+    public static int NumRaspberryBushes { get; private set; }
 
     private void Awake() {
-        NumRaspberryBushes++;
+        NumRaspberryBushes = FindObjectsOfType<RaspberryBush>().Length;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Slasher")) {
-            NumRaspberryBushes--;
-            if (NumRaspberryBushes <= 0) {
-                Instantiate(raspberryPickup, transform.position, Quaternion.identity);
-            }
+    public override void Slash() {
+        base.Slash();
+
+        NumRaspberryBushes--;
+        if (NumRaspberryBushes <= 0) {
+            Instantiate(raspberryPickup, transform.position, Quaternion.identity);
         }
     }
 }

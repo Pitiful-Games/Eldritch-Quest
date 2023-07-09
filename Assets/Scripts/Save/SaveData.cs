@@ -16,6 +16,6 @@ public class SaveData {
 
     public SaveData() {
         saveScene = "Level1";
-        savePosition = Vector2.zero;
+        savePosition = new Vector2(30, 10);
     }
 }

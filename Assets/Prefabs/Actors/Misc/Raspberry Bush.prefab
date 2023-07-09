@@ -84,7 +84,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raspberry Bush
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7096783731905561685, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7316644353350533669, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -92,6 +97,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4493681192257522642}
   m_SourcePrefab: {fileID: 100100000, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+--- !u!1 &2738719475610914168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2934410226132074743, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+  m_PrefabInstance: {fileID: 1060875167046815119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6076203156768236766 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6551610200919173457, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
@@ -109,4 +119,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f1d67716f392144bb1272142f2d9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unslashedChild: {fileID: 9046945143922830233}
+  slashedChild: {fileID: 2738719475610914168}
   raspberryPickup: {fileID: 4349460448064877938, guid: de61a9e08ba44ca4786141f72ed278d1, type: 3}
+--- !u!1 &9046945143922830233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8301762468744324630, guid: 13eebbf075568b44d9a092dc4d1b7d67, type: 3}
+  m_PrefabInstance: {fileID: 1060875167046815119}
+  m_PrefabAsset: {fileID: 0}

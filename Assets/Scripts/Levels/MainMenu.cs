@@ -36,6 +36,8 @@ public class MainMenu : MonoBehaviour, IDataPersistence {
     /// </summary>
     private string lastSaveScene;
 
+    private Vector2 lastSavePosition;
+
     private void Start() {
         if (Application.platform == RuntimePlatform.WebGLPlayer) quitButton.gameObject.SetActive(false);
 
@@ -50,6 +52,7 @@ public class MainMenu : MonoBehaviour, IDataPersistence {
     /// <inheritdoc />
     public void LoadData(SaveData saveData) {
         lastSaveScene = saveData.saveScene;
+        lastSavePosition = saveData.savePosition;
     }
 
     /// <inheritdoc />
@@ -90,6 +93,6 @@ public class MainMenu : MonoBehaviour, IDataPersistence {
     ///     Load the last scene that the player saved in.
     /// </summary>
     public void LoadLastSaveSpot() {
-        GameManager.Instance.LoadSaveSpot(lastSaveScene);
+        GameManager.Instance.LoadSaveSpot(lastSaveScene, lastSavePosition);
     }
 }
