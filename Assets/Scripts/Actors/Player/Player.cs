@@ -99,6 +99,12 @@ public class Player : MonoBehaviour, IDataPersistence {
         InputHandler.Grab.performed += OnGrab;
         InputHandler.Flame.performed += OnFlame;
         InputHandler.Inventory.performed += OnInventoryOpen;
+        InputHandler.ResetPosition.performed += backToVillage;
+    }
+
+    private void backToVillage(InputAction.CallbackContext context)
+    {
+        transform.position = new Vector3(30f, 4.5f, 0);
     }
 
     private void OnInventoryOpen(InputAction.CallbackContext context) {

@@ -36,7 +36,7 @@ public class Grabbable : MonoBehaviour {
     private void Update() {
         if (!Grabber) return;
         var distance = Grabber.transform.position - transform.position;
-        if (distance.magnitude < 1) return;
+        //if (distance.magnitude < 1) return;
 
         if(Mathf.Abs(distance.x) > Mathf.Abs(distance.y)){
             distance = new Vector2(distance.x, 0).normalized;

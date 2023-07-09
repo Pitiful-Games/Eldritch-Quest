@@ -23,6 +23,8 @@ public class PlayerInputHandler : MonoBehaviour {
     /// </summary>
     [NonSerialized] public InputAction Move;
 
+    [NonSerialized] public InputAction ResetPosition;
+
     public PlayerInputActions InputActions { get; private set; }
 
     /// <summary>
@@ -55,6 +57,8 @@ public class PlayerInputHandler : MonoBehaviour {
         Inventory = InputActions.Player.Inventory;
 
         Move = InputActions.Player.Move;
+
+        ResetPosition = InputActions.Player.ResetPosition;
     }
 
     /// <summary>
