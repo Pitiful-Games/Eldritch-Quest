@@ -71,6 +71,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ResetPosition"",
+                    ""type"": ""Button"",
+                    ""id"": ""87b036dc-6ae9-4842-b585-798d1a7f4957"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -242,7 +251,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4231b2e4-db3b-4530-9a10-cd12eebaecad"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
@@ -252,11 +261,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8949dbb7-48a0-4986-b714-5a6f9b2f5a7f"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""b91625db-f28a-4c6a-b955-026200dd4746"",
+                    ""path"": ""<Mouse>/middleButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard & Mouse"",
+                    ""groups"": """",
                     ""action"": ""Slash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -264,7 +273,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e15aa2d5-7264-465c-b39f-ad03d4c28671"",
-                    ""path"": ""<Keyboard>/c"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
@@ -274,19 +283,19 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""cee56555-2c77-483c-9be3-3d69de793f7c"",
-                    ""path"": ""<Mouse>/middleButton"",
+                    ""id"": ""f88fced7-1b14-4cd1-977c-048d32626575"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard & Mouse"",
+                    ""groups"": """",
                     ""action"": ""Flame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ab1c1cf6-11b4-4729-945c-537ef8f7258f"",
-                    ""path"": ""<Keyboard>/x"",
+                    ""id"": ""b38fbff8-a636-4824-a7e2-8d69cbc70958"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
@@ -296,11 +305,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b38fbff8-a636-4824-a7e2-8d69cbc70958"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""id"": ""1e2618ff-d40c-4786-ab58-8d4bc462613b"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard & Mouse"",
+                    ""groups"": """",
                     ""action"": ""Grab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -324,6 +333,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f161330-4ebe-45b6-a478-c749253c0fb9"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -367,6 +387,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Grab = m_Player.FindAction("Grab", throwIfNotFound: true);
         m_Player_Flame = m_Player.FindAction("Flame", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
+        m_Player_ResetPosition = m_Player.FindAction("ResetPosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -433,6 +454,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Grab;
     private readonly InputAction m_Player_Flame;
     private readonly InputAction m_Player_Inventory;
+    private readonly InputAction m_Player_ResetPosition;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -442,6 +464,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Grab => m_Wrapper.m_Player_Grab;
         public InputAction @Flame => m_Wrapper.m_Player_Flame;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
+        public InputAction @ResetPosition => m_Wrapper.m_Player_ResetPosition;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -466,6 +489,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Inventory.started += instance.OnInventory;
             @Inventory.performed += instance.OnInventory;
             @Inventory.canceled += instance.OnInventory;
+            @ResetPosition.started += instance.OnResetPosition;
+            @ResetPosition.performed += instance.OnResetPosition;
+            @ResetPosition.canceled += instance.OnResetPosition;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -485,6 +511,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Inventory.started -= instance.OnInventory;
             @Inventory.performed -= instance.OnInventory;
             @Inventory.canceled -= instance.OnInventory;
+            @ResetPosition.started -= instance.OnResetPosition;
+            @ResetPosition.performed -= instance.OnResetPosition;
+            @ResetPosition.canceled -= instance.OnResetPosition;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -527,5 +556,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnGrab(InputAction.CallbackContext context);
         void OnFlame(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
+        void OnResetPosition(InputAction.CallbackContext context);
     }
 }

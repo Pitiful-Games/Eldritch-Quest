@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ResetPosition",
+                    "type": "Button",
+                    "id": "87b036dc-6ae9-4842-b585-798d1a7f4957",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -220,7 +229,7 @@
                 {
                     "name": "",
                     "id": "4231b2e4-db3b-4530-9a10-cd12eebaecad",
-                    "path": "<Keyboard>/z",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
@@ -230,11 +239,11 @@
                 },
                 {
                     "name": "",
-                    "id": "8949dbb7-48a0-4986-b714-5a6f9b2f5a7f",
-                    "path": "<Mouse>/leftButton",
+                    "id": "b91625db-f28a-4c6a-b955-026200dd4746",
+                    "path": "<Mouse>/middleButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Slash",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -242,7 +251,7 @@
                 {
                     "name": "",
                     "id": "e15aa2d5-7264-465c-b39f-ad03d4c28671",
-                    "path": "<Keyboard>/c",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
@@ -252,19 +261,19 @@
                 },
                 {
                     "name": "",
-                    "id": "cee56555-2c77-483c-9be3-3d69de793f7c",
-                    "path": "<Mouse>/middleButton",
+                    "id": "f88fced7-1b14-4cd1-977c-048d32626575",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Flame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "ab1c1cf6-11b4-4729-945c-537ef8f7258f",
-                    "path": "<Keyboard>/x",
+                    "id": "b38fbff8-a636-4824-a7e2-8d69cbc70958",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
@@ -274,11 +283,11 @@
                 },
                 {
                     "name": "",
-                    "id": "b38fbff8-a636-4824-a7e2-8d69cbc70958",
-                    "path": "<Mouse>/rightButton",
+                    "id": "1e2618ff-d40c-4786-ab58-8d4bc462613b",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Grab",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -302,6 +311,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f161330-4ebe-45b6-a478-c749253c0fb9",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
