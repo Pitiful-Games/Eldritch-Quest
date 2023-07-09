@@ -43,7 +43,7 @@ public class AudioManager : Singleton<AudioManager> {
         }
     }
     
-    private void PauseMusic(){
+    public void PauseMusic(){
         MenuMusic.Pause();
         MenuMusicDrums.Pause();
         HardMusic.Pause();

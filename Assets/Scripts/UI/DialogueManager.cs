@@ -36,8 +36,12 @@ public class DialogueManager : BaseUI {
 
         Debug.Log("Dialogue enable");
         var player = FindObjectOfType<Player>();
-        if (player) player.enabled = true; 
+        if (player) player.enabled = true;
 
+        if (UIManager.Instance.GetUI<QuestLog>().AllQuestsComplete) {
+            GameManager.Instance.ChangeScene("GameWin");
+        }
+        
         base.Close();
     }
 

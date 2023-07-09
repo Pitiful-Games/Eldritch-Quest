@@ -4,4 +4,9 @@ using UnityEngine;
 public class Quest : ScriptableObject {
     public int id;
     public string text;
+    public bool completed;
+
+    public void Complete() {
+        completed = true;
+    }
 }

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Flower Quest
   m_EditorClassIdentifier: 
   id: 1
-  text: Find a way to comfort the little girl.
+  text: Find ways to comfort the little girl.
+  completed: 0
